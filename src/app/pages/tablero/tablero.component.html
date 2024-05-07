@@ -1,0 +1,19 @@
+<app-palabra *ngIf="palabra" [letras]="letrasPalabra" [intentos]="intentos"></app-palabra>
+<div class="intentos">
+  <ng-container *ngFor="let row of [0,1,2,3,4,]">
+    <ng-container *ngFor="let col of [0,1,2,3,4,]">
+      <input type="text" maxlength="1" [(ngModel)]="intentos[row * 5 + col]">
+    </ng-container>
+  </ng-container>
+  <ng-container *ngFor="let letra of letrasPalabra; let i = index">
+    <div [ngClass]="{'verde': resultadoIntento[i] === 'verde', 'amarillo': resultadoIntento[i] === 'amarillo', 'gris': resultadoIntento[i] === 'gris'}">{{ letra }}</div>
+  </ng-container>
+  <button (click)="enviarIntento()">Enviar</button>
+</div>
+<div *ngIf="adivinado">
+  ¡Has adivinado la palabra!
+</div>
+
+<div *ngIf="intentosRestantes === 0">
+  ¡Has agotado todos los intentos! La palabra era "{{ palabra }}".
+</div>

@@ -1,0 +1,7 @@
+<div class="palabra">
+  <ng-container *ngFor="let letra of letras; let i = index">
+    <div [ngClass]="getClase(i)">
+      {{ letra }}
+    </div>
+  </ng-container>
+</div>
